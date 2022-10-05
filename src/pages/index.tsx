@@ -4,6 +4,7 @@ import Image from "next/image";
 import { trpc } from "utils/trpc";
 
 import Header from "components/Header";
+import ConnectModal from "components/ConnectModal";
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-auto flex min-h-screen w-full flex-col pb-4 text-white">
+        <ConnectModal />
         <section className="relative w-full overflow-hidden">
           <div className="absolute z-[-1] h-full w-full overflow-hidden">
             <Image
@@ -29,17 +31,18 @@ const Home: NextPage = () => {
             />
           </div>
           <Header />
-          <div className="flex-column items-center justify-center px-14 pt-20 pb-24 md:flex-row">
-            <div>
+          <div className="flex-col items-center justify-center px-14 pt-20 pb-24 md:flex md:flex-row">
+            <div className="w-full md:w-[50%]">
               <h1 className="text-4xl font-bold">
-                Trade, Earn, <span className="text-btn1">Elephant Money</span>{" "}
-                on the most popular decentralized platform.
+                Trade, Earn,{" "}
+                <span className=" text-secondaryLight">Elephant Money</span> on
+                the most popular decentralized platform.
               </h1>
               <button className="sButton mt-2 px-6 py-2">
                 <div className="unskew">Buy Elephant</div>
               </button>
             </div>
-            <div>Other Image</div>
+            <div className="w-full md:w-[50%]">Other Image</div>
           </div>
         </section>
         <section>Swap</section>
