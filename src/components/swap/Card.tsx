@@ -1,5 +1,8 @@
 import { FC, useRef, useState } from "react";
 import Image from "next/image";
+import useToken from "hooks/useToken";
+import { BigNumber } from "ethers";
+import { commify, formatEther, parseEther } from "ethers/lib/utils";
 
 const Card: FC<Record<string, never>> = () => {
   const [fromToken, setFromToken] = useState<string>("busd");
@@ -10,12 +13,31 @@ const Card: FC<Record<string, never>> = () => {
   const fromRef = useRef<HTMLInputElement>(null);
   const toRef = useRef<HTMLInputElement>(null);
 
+  const { balance: busdBalance } = useToken(
+    "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
+  );
+  const { balance: trunkBalance } = useToken(
+    "0xdd325C38b12903B727D16961e61333f4871A70E0"
+  );
+  const { balance: elephantBalance } = useToken(
+    "0xe283d0e3b8c102badf5e8166b73e02d96d92f688"
+  );
+
+  const { balance: bnbBalance } = useToken();
+
   const switchTokens = () => {
     const cF = fromToken;
     const cT = toToken;
     if (cF === cT) return;
     setFromToken(cT);
     setToToken(cF);
+  };
+
+  const currentTokenBalance: { [key: string]: BigNumber } = {
+    busd: busdBalance,
+    bnb: bnbBalance,
+    elephant: elephantBalance.mul(10 ** 9),
+    trunk: trunkBalance,
   };
 
   return (
@@ -62,7 +84,14 @@ const Card: FC<Record<string, never>> = () => {
           ref={fromRef}
           placeholder="0.00"
         />
-        <div className="text-right text-sm">Wallet: 1.2586794613</div>
+        <div className="text-right text-sm">
+          Wallet:{" "}
+          {commify(
+            parseFloat(
+              formatEther(currentTokenBalance[fromToken] ?? parseEther("0"))
+            ).toFixed(4)
+          )}
+        </div>
       </div>
       <div className="flex justify-center">
         <button onClick={switchTokens}>
@@ -141,7 +170,14 @@ const Card: FC<Record<string, never>> = () => {
           ref={toRef}
           placeholder="0.00"
         />
-        <div className="text-right text-sm">Wallet: 1.2586794613</div>
+        <div className="text-right text-sm">
+          Wallet:{" "}
+          {commify(
+            parseFloat(
+              formatEther(currentTokenBalance[toToken] ?? parseEther("0"))
+            ).toFixed(4)
+          )}
+        </div>
       </div>
       <div className="my-6 flex flex-row justify-between">
         <div className="text-sm font-semibold text-accent">Trading fees</div>
