@@ -6,9 +6,12 @@ import { trpc } from "utils/trpc";
 import Header from "components/Header";
 import ConnectModal from "components/ConnectModal";
 import SwapSection from "components/swap/Section";
+import { useEagerConnect } from "utils/useAuth";
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+
+  useEagerConnect();
 
   return (
     <>
