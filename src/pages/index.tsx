@@ -5,6 +5,7 @@ import { trpc } from "utils/trpc";
 
 import Header from "components/Header";
 import ConnectModal from "components/ConnectModal";
+import SwapSection from "components/swap/Section";
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
@@ -45,7 +46,7 @@ const Home: NextPage = () => {
             <div className="w-full md:w-[50%]">Other Image</div>
           </div>
         </section>
-        <section>Swap</section>
+        <SwapSection />
       </main>
     </>
   );
