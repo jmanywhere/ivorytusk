@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { FC } from "react";
 
+import SwapCard from "components/swap/Card";
+
 const Section: FC<Record<string, never>> = () => {
   return (
     <section className="relative w-full overflow-hidden py-[70px] text-black">
@@ -12,8 +14,10 @@ const Section: FC<Record<string, never>> = () => {
           alt="swap_bg"
         />
       </div>
-      <div className="container mx-auto flex flex-col items-center justify-between md:flex-row">
-        <div>SWAP CARD</div>
+      <div className="container mx-auto flex flex-col items-center justify-evenly md:flex-row">
+        <div>
+          <SwapCard />
+        </div>
         <div className="max-w-[75vw] md:max-w-[450px]">
           <h2 className="text-7xl font-black italic text-btn1">TRADE</h2>
           <h3 className="text-4xl font-black italic text-accent2">

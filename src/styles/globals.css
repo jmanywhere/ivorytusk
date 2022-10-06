@@ -19,4 +19,7 @@
   .unskew{
     transform: skew(25deg);
   }
+  .cardShadow{
+    box-shadow: 0px -1.66004px 7px rgba(4, 2, 35, 0.25), 0px 1.66004px 3.32009px rgba(4, 2, 35, 0.25);
+  }
 }
