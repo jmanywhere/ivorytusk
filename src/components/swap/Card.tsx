@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import useToken from "hooks/useToken";
 import { BigNumber } from "ethers";
@@ -40,6 +40,13 @@ const Card: FC<Record<string, never>> = () => {
     trunk: trunkBalance,
   };
 
+  const swap = useCallback(async () => {
+    console.log("swap", {
+      sendVal: fromRef.current?.value || "no val",
+      selectFrom: selectFrom.current?.value,
+    });
+  }, []);
+
   return (
     <div className="cardShadow flex w-[320px] flex-col rounded-2xl bg-white px-7 pb-9 pt-5">
       <div className="flex items-center justify-center rounded-lg bg-gray-300">
@@ -51,7 +58,7 @@ const Card: FC<Record<string, never>> = () => {
         Trade Elephant Money in an instant
       </p>
       <hr className="border-[rgba(35, 25, 66, 0.36)] mt-7 mb-12 w-full border" />
-      <div className="flex flex-row items-center justify-between pb-2">
+      <div className="flex flex-row items-center justify-between pb-1">
         <div className="pl-2 text-sm font-semibold">From</div>
         <div className="flex flex-row items-center justify-end">
           <div
@@ -74,7 +81,7 @@ const Card: FC<Record<string, never>> = () => {
             <option value="bnb">BNB</option>
             <option value="busd">BUSD</option>
             <option value="trunk">TRUNK</option>
-            <option value="elephant">EM</option>
+            {/* <option value="elephant">EM</option> */}
           </select>
         </div>
       </div>
@@ -83,8 +90,9 @@ const Card: FC<Record<string, never>> = () => {
           className="w-full rounded-xl bg-gray-300 py-2 px-4 text-right"
           ref={fromRef}
           placeholder="0.00"
+          type="number"
         />
-        <div className="text-right text-sm">
+        <div className="pr-2 text-right text-sm">
           Wallet:{" "}
           {commify(
             parseFloat(
@@ -138,7 +146,7 @@ const Card: FC<Record<string, never>> = () => {
         </button>
       </div>
       <div className="pt-8">
-        <div className="flex flex-row items-center justify-between pb-2">
+        <div className="p1-2 flex flex-row items-center justify-between">
           <div className="pl-2 text-sm font-semibold">To</div>
           <div className="flex flex-row items-center justify-end">
             <div
@@ -170,7 +178,7 @@ const Card: FC<Record<string, never>> = () => {
           ref={toRef}
           placeholder="0.00"
         />
-        <div className="text-right text-sm">
+        <div className="pr-2 text-right text-sm">
           Wallet:{" "}
           {commify(
             parseFloat(
@@ -183,7 +191,10 @@ const Card: FC<Record<string, never>> = () => {
         <div className="text-sm font-semibold text-accent">Trading fees</div>
         <div className="text-sm font-semibold">12%</div>
       </div>
-      <button className="w-full rounded-2xl bg-btn1 py-4 text-sm font-bold text-white">
+      <button
+        className="w-full rounded-2xl bg-btn1 py-4 text-sm font-bold text-white"
+        onClick={swap}
+      >
         Swap
       </button>
     </div>
