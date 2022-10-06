@@ -6,7 +6,7 @@ import SwapCard from "components/swap/Card";
 const Section: FC<Record<string, never>> = () => {
   return (
     <section className="relative w-full overflow-hidden py-[70px] text-black">
-      <div className="absolute -left-44 -top-14 z-[-2] h-[600px] w-[600px]">
+      <div className="absolute top-5 left-[-10px] z-[-2] h-[10vh] w-[80vw] md:left-[-500px]">
         <Image
           src="/assets/swap_bg.png"
           width={2124}
@@ -18,18 +18,18 @@ const Section: FC<Record<string, never>> = () => {
         <div>
           <SwapCard />
         </div>
-        <div className="max-w-[75vw] md:max-w-[450px]">
+        <div className="max-w-[75vw] pt-10 md:max-w-[450px] md:pt-0">
           <h2 className="text-7xl font-black italic text-btn1">TRADE</h2>
-          <h3 className="text-4xl font-black italic text-accent2">
+          <h3 className="pb-4 text-4xl font-black italic text-accent2">
             ELEPHANT MONEY
           </h3>
-          <p className=" whitespace-pre break-normal leading-6">
+          <div className=" whitespace-pre-line break-normal leading-6">
             <strong>ELEPHANT MONEY</strong> is simply the first global
-            decentralized{"\n"}community bank of it&apos;s kind.{"\n"}
+            decentralized community bank of it&apos;s kind.{"\n"}
             <strong>Trade</strong>, <strong>Buy</strong> and{" "}
             <strong>Save</strong> Elephant Money with{"\n"}
             <span className="font-bold text-btn1">IvoryTusk AUM</span>
-          </p>
+          </div>
         </div>
       </div>
     </section>
