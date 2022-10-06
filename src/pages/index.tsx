@@ -32,8 +32,8 @@ const Home: NextPage = () => {
             />
           </div>
           <Header />
-          <div className="flex-col items-center justify-center px-14 pt-20 pb-24 md:flex md:flex-row">
-            <div className="w-full md:w-[50%]">
+          <div className="flex-col items-center justify-center px-14 pt-10 pb-24 md:flex md:flex-row md:pt-20">
+            <div className="w-full md:w-[40%]">
               <h1 className="text-4xl font-bold">
                 Trade, Earn,{" "}
                 <span className=" text-secondaryLight">Elephant Money</span> on
@@ -43,7 +43,14 @@ const Home: NextPage = () => {
                 <div className="unskew">Buy Elephant</div>
               </button>
             </div>
-            <div className="w-full md:w-[50%]">Other Image</div>
+            <div className="mt-8 flex w-full items-center justify-center md:mt-0 md:w-[50%]">
+              <Image
+                src="/assets/hero1-bg.png"
+                width={966 / 3}
+                height={1014 / 3}
+                alt="hero_g1"
+              />
+            </div>
           </div>
         </section>
         <SwapSection />
