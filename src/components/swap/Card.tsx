@@ -81,7 +81,7 @@ const Card: FC<Record<string, never>> = () => {
             <option value="bnb">BNB</option>
             <option value="busd">BUSD</option>
             <option value="trunk">TRUNK</option>
-            {/* <option value="elephant">EM</option> */}
+            <option value="elephant">EM</option>
           </select>
         </div>
       </div>
@@ -189,7 +189,11 @@ const Card: FC<Record<string, never>> = () => {
       </div>
       <div className="my-6 flex flex-row justify-between">
         <div className="text-sm font-semibold text-accent">Trading fees</div>
-        <div className="text-sm font-semibold">12%</div>
+        {/* TRADING FEES BY PAIR */}
+        {/* Exchange BNB - BUSD and vice versa */}
+        <div className="text-sm font-semibold">
+          {fromToken == "elephant" || toToken == "elephant" ? "12" : "2"}%
+        </div>
       </div>
       <button
         className="w-full rounded-2xl bg-btn1 py-4 text-sm font-bold text-white"
