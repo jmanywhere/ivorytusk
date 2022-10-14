@@ -18,7 +18,7 @@ const ConnectModal = () => {
       {isOpen && (
         <dialog
           open={isOpen}
-          className="top-[20%] bottom-auto left-auto right-auto z-50 grid min-w-[300px] max-w-[80vw] grid-cols-1 grid-rows-2 items-center justify-center self-center rounded-lg border border-[rgb(51,13,83)] bg-[rgb(21,5,35)] p-0 text-white md:max-w-[50vw] md:grid-cols-2"
+          className="fixed top-[20%] bottom-auto left-auto right-auto z-50 grid min-w-[300px] max-w-[80vw] grid-cols-1 grid-rows-2 items-center justify-center self-center rounded-lg border border-[rgb(51,13,83)] bg-[rgb(21,5,35)] p-0 text-white md:max-w-[50vw] md:grid-cols-2"
         >
           <div className="flex items-center justify-center border-r-[1px] border-[rgb(51,13,83)]">
             <WalletCard

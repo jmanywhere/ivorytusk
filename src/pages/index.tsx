@@ -7,6 +7,7 @@ import Header from "components/Header";
 import ConnectModal from "components/ConnectModal";
 import SwapSection from "components/swap/Section";
 import { useEagerConnect } from "utils/useAuth";
+import BuyWithCardModal from "components/swap/BuyWithCC";
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
@@ -57,6 +58,7 @@ const Home: NextPage = () => {
           </div>
         </section>
         <SwapSection />
+        <BuyWithCardModal />
       </main>
     </>
   );

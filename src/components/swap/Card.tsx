@@ -3,10 +3,14 @@ import Image from "next/image";
 import useToken from "hooks/useToken";
 import { BigNumber } from "ethers";
 import { commify, formatEther, parseEther } from "ethers/lib/utils";
+import { useSetAtom } from "jotai";
+import { buyCC } from "utils/atoms";
 
 const Card: FC<Record<string, never>> = () => {
   const [fromToken, setFromToken] = useState<string>("busd");
   const [toToken, setToToken] = useState<string>("elephant");
+
+  const setBuyOpen = useSetAtom(buyCC);
 
   const selectFrom = useRef<HTMLSelectElement>(null);
   const selectTo = useRef<HTMLSelectElement>(null);
@@ -50,8 +54,14 @@ const Card: FC<Record<string, never>> = () => {
   return (
     <div className="cardShadow flex w-[320px] flex-col rounded-2xl bg-white px-7 pb-9 pt-5">
       <div className="flex items-center justify-center rounded-lg bg-gray-300">
-        <button className="rounded-lg bg-btn1 p-2 font-bold text-white">
+        <button className="flex-1 cursor-default rounded-l-lg bg-btn1 p-2 font-bold text-white">
           Exchange
+        </button>
+        <button
+          className="flex-1 rounded-r-lg bg-gray-600 p-2 font-bold text-white hover:bg-gray-200/20 hover:text-black"
+          onClick={() => setBuyOpen(true)}
+        >
+          Buy
         </button>
       </div>
       <p className="mt-8 text-center text-[13.28px] font-semibold">
