@@ -1,10 +1,9 @@
 // State
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 // Web3
 import { useWeb3React } from "@web3-react/core";
 import {
   InjectedConnector,
-  UserRejectedRequestError as UserRejectedRequestErrorInjected,
 } from "@web3-react/injected-connector";
 import {
   WalletConnectConnector,
@@ -16,7 +15,6 @@ import { BscConnector } from "@binance-chain/bsc-connector";
 // data
 
 const validChains = [56, 97];
-const POLLING_INTERVAL = 12000;
 // Login and Logout Hook -> Handles Wallet Connection
 export const useAuth = () => {
   const { activate, deactivate, account, chainId } = useWeb3React();
